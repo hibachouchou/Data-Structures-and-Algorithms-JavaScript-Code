@@ -1,4 +1,4 @@
-console.log("Stack")
+console.log("Stacks ")
 // Example 1
 class Stack{
 

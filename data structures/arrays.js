@@ -1,1 +1,1 @@
-console.log("arrays")
+console.log("Arrays")

@@ -1,1 +1,1 @@
-console.log("linked list")
+console.log("Linked List")

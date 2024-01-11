@@ -1,4 +1,4 @@
-console.log("Set");
+console.log("Sets");
 
 class mySet {
   
