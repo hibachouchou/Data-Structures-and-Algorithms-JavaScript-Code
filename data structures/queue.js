@@ -1,4 +1,4 @@
-console.log("Queues & Priority Queues")
+console.log("Queues")
 
 
 class Queue{
