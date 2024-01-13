@@ -119,9 +119,106 @@ class BST{
         return removeNode(this.root,data)
     }
 
+    //Binary Search Tree: Traversal & Height
 
+findMinHeight(node = this.root) {
+    if (node == null) {
+        return -1;
+    };
+    let left = this.findMinHeight(node.left);
+    let right = this.findMinHeight(node.right);
+    if (left < right) {
+        return left + 1;
+    } else {
+        return right + 1;
+    };
+}
 
-   }
+findMaxHeight(node = this.root) {
+    if (node == null) {
+        return -1;
+    };
+    let left = this.findMaxHeight(node.left);
+    let right = this.findMaxHeight(node.right);
+    if (left > right) {
+        return left + 1;
+    } else {
+        return right + 1;
+    };
+}
+isBalanced(){
+    return (this.findMinHeight() >= this.findMaxHeight() - 1)
+}
+
+inOrderTraversal(){
+    if (this.root == null) {
+        return null;
+      } else {
+        var result = new Array();
+        function traverseInOrder(node) {       
+          node.left && traverseInOrder(node.left);
+          result.push(node.data);
+          node.right && traverseInOrder(node.right);
+        }
+        traverseInOrder(this.root);
+        return result;
+      };
+}
+
+preOrderTraversal(){
+    if (this.root == null) {
+        return null;
+      } else {
+        var result = new Array();
+        function traversePreOrder(node) {
+          result.push(node.data);
+          node.left && traversePreOrder(node.left);
+          node.right && traversePreOrder(node.right);
+        };
+        traversePreOrder(this.root);
+        return result;
+      };
+}
+
+postOrderTraversal(){
+    if (this.root == null) {
+        return null;
+      } else {
+        var result = new Array();
+        function traversePostOrder(node) {
+          node.left && traversePostOrder(node.left);
+          node.right && traversePostOrder(node.right);
+          result.push(node.data);
+        };
+        traversePostOrder(this.root);
+        return result;
+      }
+}
+
+levelOrderTraversal(){
+    let result = [];
+    let Q = []; 
+    if (this.root != null) {
+        Q.push(this.root);
+        while(Q.length > 0) {
+            let node = Q.shift();
+            result.push(node.data);
+            if (node.left != null) {
+                Q.push(node.left);
+            };
+            if (node.right != null) {
+                Q.push(node.right);
+            };
+        };
+        return result;
+    } else {
+        return null;
+    };
+}
+//
+}
+
+ 
  // Usage example:
  let myBST = new BST();
 
@@ -142,3 +239,18 @@ class BST{
  console.log("Removing 70 from the BST");
  myBST.remove(70);
  console.log("Is 70 present in the BST?", myBST.isPresent(70)); // Output: false
+
+
+ console.log("Binary Search Tree: Traversal & Height")
+console.log("In-Order Traversal:", myBST.inOrderTraversal()); // Output: [20, 30, 40, 50, 60, 80]
+
+console.log("Pre-Order Traversal:", myBST.preOrderTraversal()); // Output: [50, 30, 20, 40, 60, 80]
+
+console.log("Post-Order Traversal:", myBST.postOrderTraversal()); // Output: [20, 40, 30, 80, 60, 50]
+
+console.log("Level-Order Traversal:", myBST.levelOrderTraversal()); // Output: [50, 30, 60, 20, 40, 80]
+
+console.log("Min Height of the BST:", myBST.findMinHeight()); // Output: 2
+console.log("Max Height of the BST:", myBST.findMaxHeight()); // Output: 2
+
+console.log("Is the BST balanced?", myBST.isBalanced()); // Output: true
