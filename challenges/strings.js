@@ -72,13 +72,17 @@ function CapitalizeWord(str) {
 
 /*9. Write a JavaScript function that takes a string with both lowercase and upper case letters as a parameter.
  It converts upper case letters to lower case, and lower case letters to upper case.*/
- function SwapCase(str){
+ function SwapCase(str) {
+    str = str.split('').map(letter => {
+        return letter === letter.toLowerCase() ? letter.toUpperCase() : letter.toLowerCase();
+    }).join('');
+    console.log(str);
+}
 
-
- }
+ SwapCase('HibaBichaSisterS')
 
  //11. Write a JavaScript function to convert a string into camel case.
  function CamelCase(str){
 
-    
+
  }
