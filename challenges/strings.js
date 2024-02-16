@@ -172,3 +172,21 @@ Note: The successor is calculated by incrementing characters starting from the r
    regardless of special characters and letter case.
 A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards*/
 
+//51. Write a JavaScript program to find the most frequent character in a given string.
+
+//52. Write a JavaScript program to find the most frequent word in a given string.
+
+//53. Write a JavaScript function to reverse words in a given string.
+
+/*54. Write a JavaScript function to find the length of the longest subsequence present between two sequences.
+It is important to understand that a subsequence is a sequence that appears in a similar relative order, 
+but is not necessarily contiguous. */
+
+
+/*55. Write a JavaScript function to get the length of the longest valid parentheses (well-formed)
+ from a given string containing just the characters '[' and ']'. */
+
+
+ /*56. Write a JavaScript function to find the length of the longest palindromic subsequence in a given string.
+Subsequences are sequences that can be created by deleting some or all of the elements 
+from another sequence without changing their order. */
