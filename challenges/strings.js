@@ -1,3 +1,4 @@
+//JavaScript String - Exercises
 //1. Write a JavaScript function to check whether an 'input' is a string or not.
 function IsStrning(input){
  console.log(typeof(input)==="string")   
