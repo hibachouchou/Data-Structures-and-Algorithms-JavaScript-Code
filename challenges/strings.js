@@ -79,7 +79,7 @@ function CapitalizeWord(str) {
     console.log(str);
 }
 
- SwapCase('HibaBichaSisterS')
+ //SwapCase('HibaBichaSisterS')
 
  //11. Write a JavaScript function to convert a string into camel case.
  function CamelCase(str){
