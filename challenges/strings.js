@@ -83,16 +83,63 @@ function CapitalizeWord(str) {
  //SwapCase('HibaBichaSisterS')
 
  //10. Write a JavaScript function to convert a string into camel case.
- function CamelCase(str){
 
- }
+ function CamelCase(str){
+//M1
+//     const trimmedStr = str.trim();
+//     const words = trimmedStr.toLowerCase().split(' ');
+//     console.log(words)
+//     for(let i = 0; i < words.length; i++) {
+//         words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+//     }
+//     const camelCaseStr = words.join('');
+//     console.log(camelCaseStr);
+//M2
+const words = str.toLowerCase().split(' ');
+for(let i = 0; i < words.length; i++) {
+    words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+}
+const camelCaseStr = words.join('');
+console.log(camelCaseStr);
+}
+//CamelCase("Hiba and bicha")
 
  //11. Write a JavaScript function to uncommelize a string.
+ function UnComelizeStr(str, delimiter = ' ') {
+    const words = [];
+    let currentWordStartIndex = 0;
+    
+    for (let i = 1; i < str.length; i++) {
+        if (str.charAt(i) === str.charAt(i).toUpperCase()) {
+            words.push(str.slice(currentWordStartIndex, i));
+            currentWordStartIndex = i;
+        }
+    }
+    words.push(str.slice(currentWordStartIndex));
+    
+    return words.join(delimiter).toLowerCase();
+}
+//console.log(UnComelizeStr('helloWorld'));
+//console.log(UnComelizeStr('helloWorld', '-'));
+//console.log(UnComelizeStr('helloWorld', '_'));
 
  //12. Write a JavaScript function to concatenate a given string n times (default is 1).
+ function ConcaenateString(str, n = 1) {
+    let result = '';
+    for (let i = 0; i < n; i++) {
+        result += str;
+    }
+    console.log(result);
+}
+//ConcaenateString("Hi");
+//ConcaenateString("Hi", 3);
 
  //13. Write a JavaScript function to insert a string within a string at a particular position (default is 1).
-
+ function InsertIntoString(str,str2,index=1){
+    console.log(str.slice(0,index-1)+str2+str.slice(index-1)) 
+ }
+ //InsertIntoString("Hello World!","Web",7);  
+ 
  /*14. Write a JavaScript function that format a number in a human-readable string with the correct suffix, 
  such as 1st, 2nd, 3rd, etc.*/
 
