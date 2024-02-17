@@ -139,20 +139,93 @@ console.log(camelCaseStr);
     console.log(str.slice(0,index-1)+str2+str.slice(index-1)) 
  }
  //InsertIntoString("Hello World!","Web",7);  
- 
+
  /*14. Write a JavaScript function that format a number in a human-readable string with the correct suffix, 
  such as 1st, 2nd, 3rd, etc.*/
+ function FormatNumberToReadable(num) {
+    // Get the last digit of the number
+    const lastDigit = num % 10;
+    // Get the last two digits of the number
+    const lastTwoDigits = num % 100;
+
+    // Define suffixes for different cases
+    const suffixes = {
+        1: 'st',
+        2: 'nd',
+        3: 'rd'
+    };
+
+    // Determine the appropriate suffix
+    // Special case: 11, 12, and 13 have "th" suffix
+    const suffix = (lastTwoDigits >= 11 && lastTwoDigits <= 13) ? 'th' : suffixes[lastDigit] || 'th';
+
+    // Concatenate the number with the suffix
+    return num + suffix;
+}
+// Test the function
+// console.log(FormatNumberToReadable(1));   // Output: "1st"
+// console.log(FormatNumberToReadable(2));   // Output: "2nd"
+// console.log(FormatNumberToReadable(3));   // Output: "3rd"
+// console.log(FormatNumberToReadable(4));   // Output: "4th"
+// console.log(FormatNumberToReadable(11));  // Output: "11th"
+// console.log(FormatNumberToReadable(22));  // Output: "22nd"
+// console.log(FormatNumberToReadable(33));  // Output: "33rd"
+// console.log(FormatNumberToReadable(100)); // Output: "100th"
 
  /* 15. Write a JavaScript function to truncate a string if it is longer than the specified number of characters. 
  Truncated strings will end with a translatable ellipsis sequence ("...") (by default) or specified characters. */
+ function TruncateString(str,num,indicator="..."){
+    if(str.length<=num)return str
+    else return str.slice(0,num)+indicator
+ }
+// console.log(TruncateString("Hello My dear",30))
+// console.log(TruncateString("Hello Guys",6))
+// console.log(TruncateString("Hiba",2,'!'))
 
 //16. Write a JavaScript function to chop a string into chunks of a given length.
+function splitStringByLength(str, length=1) {
+    var result = [];
+    for (var i = 0; i < str.length; i += length) {
+        result.push(str.substr(i, length));
+    }
+    console.log(result) ;
+}
+// splitStringByLength("NourChouchene", 4)
+// splitStringByLength("hiba", 2)
+// splitStringByLength("hi")
 
 //17. Write a JavaScript function to count substrings in a string.
+function CountSubstring(str, substr) {
+    if (str.includes(substr)) {
+        let cnt = 0;
+        str.split(' ').forEach((word) => {
+            while (word.indexOf(substr) !== -1) {
+                word = word.replace(substr, "");
+                cnt++;
+            }
+        });
+        console.log(cnt);
+    } else {
+        console.log(substr + ' is not found');
+    }
+}
+
+//CountSubstring("Hi Hiba", "Hi"); // Output: 3
+//CountSubstring("Hi Hiba How are you ", "The"); // Output: The is not found
 
 //18. Write a JavaScript function that can pad (left, right) a string to get to a specific length.
 
 //19. Write a JavaScript function to repeat a string for a specified time.
+function repeatString(str, times) {
+    let result = '';
+    for (let i = 0; i < times; i++) {
+        result += str;
+    }
+    return result;
+}
+// console.log(repeatString("Hello ", 3)); 
+//console.log(repeatString("123", 5));     
+
 
 //20. Write a JavaScript function to get a part of a string after a specified character.
 
