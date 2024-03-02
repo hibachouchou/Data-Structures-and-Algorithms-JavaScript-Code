@@ -228,57 +228,140 @@ function repeatString(str, times) {
 
 
 //20. Write a JavaScript function to get a part of a string after a specified character.
+function getPartOfStringAfterChart(str, c) {
+    let result = '';
+    let index = str.indexOf(c);
+    if (index !== -1) {
+        result = str.slice(index +1);
+    }
+    console.log(result);
+}
 
+//getPartOfStringAfterChart("This is my String", "is");
+ 
 //21. Write a JavaScript function to strip leading and trailing spaces from a string.
+function trimSpaces(str){
+console.log(str.trim())
+}
+//trimSpaces(" Hello World ")
 
 //22. Write a JavaScript function to truncate a string to a certain number of words.
+function truncateStringToNumOfWord(str,num){
+    const words=str.split(' ')
+    console.log(words.slice(0,num).join(' '))
+}
+//truncateStringToNumOfWord("Hello world I am learning javascript today","2")
 
 /*23. Write a JavaScript function to alphabetize a given string.
 Alphabetize string : An individual string can be alphabetized. 
 This rearranges the letters so they are sorted A to Z.*/
+function alphabetizeString(str){
+    let arr=[];
+    for(let i=0;i<str.length;i++){
+        arr[i]=str[i]
+        }
+        arr.sort();
+        return arr.join('');
+    }
+    //console.log(alphabetizeString("hello world")); 
+
 
 //24. Write a JavaScript function to remove the first occurrence of a given 'search string' from a string.
-
-//25. Write a JavaScript function to convert ASCII to Hexadecimal format.
-
-//26. Write a JavaScript function to convert Hexadecimal to ASCII format.
-
-//27. Write a JavaScript function to find a word within a string.
-
-//28. Write a JavaScript function that checks whether a string ends with a specified suffix.
-
-//29. Write a JavaScript function to remove non-printable ASCII characters.
-
-//30. Write a JavaScript function to remove non-word characters.
-
-//31. Write a JavaScript function to convert a string to title case.
-
-//32. Write a JavaScript function to create a zero-filled value with an optional +, - sign.
-
-//33. Write a JavaScript function to test case-insensitive (except special Unicode characters) string comparison.
-
-//34. Write a JavaScript function to create a case-insensitive search.
+function removeFirstOccurenceOfString(str,searchStr){
+    let indx=str.indexOf(searchStr);
+    if(indx!==-1){
+        console.log(str.substring(0,indx)+str.substring(indx+searchStr.length))
+    }else{
+        console.log(str) 
+    }
+    }
+    //removeFirstOccurenceOfString("Hello World Hello Again","Hello")
 
 
-//35. Write a JavaScript function to uncapitalize the first character of a string.
+//25. Write a JavaScript function to find a word within a string.
+function findAWordInString(string,word){
+    let strArr=string.split(' ');
+    if (strArr.includes(word)){
+        console.log(`The word "${word}" is present in the string.`);
+        } else {
+            console.log(`The word "${word}" is not present in the string.`);
+            }
+            }
+ //findAWordInString("I love coding and coding is fun","coding");
+
+//26. Write a JavaScript function that checks whether a string ends with a specified suffix.
+//M1
+
+// function checkIfStringEndsWithSuffix(str,suffix){
+//    const lastNCharacters = str.substr((str.length - suffix.length));
+//    if (lastNCharacters === suffix) {
+//       console.log("Yes");
+//    } else {
+//      console.log("No");
+//    }
+// }
+
+//M2
+function checkIfStringEndsWithSuffix(str,suffix){
+    if(str.endsWith(suffix)){
+        console.log("Yes");
+       }
+    else {
+    console.log("No");
+     }
+
+    }
+//checkIfStringEndsWithSuffix("This is a test", "test");
+
+//27. Write a JavaScript function to remove non-word characters.
+function removeNonWordCharsFromString(str){
+    var result = '';
+    for (var i = 0; i < str.length; i++) {
+      // Check if the character is a word character or a space
+      if ((str[i] >= 'a' && str[i] <= 'z') ||
+          (str[i] >= 'A' && str[i] <= 'Z') ||
+          (str[i] >= '0' && str[i] <= '9') ||
+          str[i] === ' ') {
+        // If it's a word character or a space, add it to the result
+        result += str[i];
+      }
+    }
+    console.log(result) ;
+}
+//removeNonWordCharsFromString('PHP ~!@#$%^&*()+`-={}[]|\\:";\'/?><., MySQL')
+
+//28. Write a JavaScript function to convert a string to title case.
+function ConvertStringToTitleCase(str){
+    CapitalizeWord(str)
+}
+//ConvertStringToTitleCase("hiba and bicha")
+
+//29. Write a JavaScript function to create a zero-filled value with an optional +, - sign.
+//
+//30. Write a JavaScript function to test case-insensitive (except special Unicode characters) string comparison.
+//37
+//31. Write a JavaScript function to create a case-insensitive search.
 
 
-//36. Write a JavaScript function to uncapitalize the first letter of each word of a string.
-
-//37. Write a JavaScript function to capitalize each word in the string.
-
-//38. Write a JavaScript function to uncapitalize each word in the string.
+//32. Write a JavaScript function to uncapitalize the first character of a string.
 
 
-//39. Write a JavaScript function to test whether the character at the index provided is upper case.
+//33. Write a JavaScript function to uncapitalize the first letter of each word of a string.
 
-//40. Write a JavaScript function to test whether the character at the given (character) index is lower case.
+//34. Write a JavaScript function to capitalize each word in the string.
 
-//41. Write a JavaScript function to test whether a string starts with a specified string.
+//35. Write a JavaScript function to uncapitalize each word in the string.
 
-//42. Write a JavaScript function to test whether a string ends with a specified string.
 
-/*48. Write a JavaScript function to get the successor to a string.
+//36. Write a JavaScript function to test whether the character at the index provided is upper case.
+
+//37. Write a JavaScript function to test whether the character at the given (character) index is lower case.
+
+//38. Write a JavaScript function to test whether a string starts with a specified string.
+
+//39. Write a JavaScript function to test whether a string ends with a specified string.
+
+/*40. Write a JavaScript function to get the successor to a string.
 
 Note: The successor is calculated by incrementing characters starting from the rightmost alphanumeric
  (or the rightmost character if there are no alphanumerics) in the string. 
@@ -289,25 +372,25 @@ Note: The successor is calculated by incrementing characters starting from the r
   adding an additional character if necessary.
  */
 
-  /* 50. Write a JavaScript program to check if a given string contains alphanumeric characters that are palindromes
+  /* 41. Write a JavaScript program to check if a given string contains alphanumeric characters that are palindromes
    regardless of special characters and letter case.
 A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards*/
 
-//51. Write a JavaScript program to find the most frequent character in a given string.
+//42. Write a JavaScript program to find the most frequent character in a given string.
 
-//52. Write a JavaScript program to find the most frequent word in a given string.
+//43. Write a JavaScript program to find the most frequent word in a given string.
 
-//53. Write a JavaScript function to reverse words in a given string.
+//44. Write a JavaScript function to reverse words in a given string.
 
-/*54. Write a JavaScript function to find the length of the longest subsequence present between two sequences.
+/*45. Write a JavaScript function to find the length of the longest subsequence present between two sequences.
 It is important to understand that a subsequence is a sequence that appears in a similar relative order, 
 but is not necessarily contiguous. */
 
 
-/*55. Write a JavaScript function to get the length of the longest valid parentheses (well-formed)
+/*46. Write a JavaScript function to get the length of the longest valid parentheses (well-formed)
  from a given string containing just the characters '[' and ']'. */
 
 
- /*56. Write a JavaScript function to find the length of the longest palindromic subsequence in a given string.
+ /*47. Write a JavaScript function to find the length of the longest palindromic subsequence in a given string.
 Subsequences are sequences that can be created by deleting some or all of the elements 
 from another sequence without changing their order. */
