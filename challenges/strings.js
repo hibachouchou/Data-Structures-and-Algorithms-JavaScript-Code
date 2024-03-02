@@ -1,11 +1,11 @@
 //JavaScript String - Exercises
 //1. Write a JavaScript function to check whether an 'input' is a string or not.
-function IsStrning(input){
+function IsString(input){
  console.log(typeof(input)==="string")   
 }
 
-//IsStrning("Hiba")
-//IsStrning(7)
+//IsString("Hiba")
+//IsString(7)
 
 //2. Write a JavaScript function to check whether a string is blank or not.
 function IsBlank(str){
@@ -414,6 +414,27 @@ Note: The successor is calculated by incrementing characters starting from the r
 /* 39. Write a JavaScript program to check if a given string contains alphanumeric characters that are palindromes
    regardless of special characters and letter case.
 A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards*/
+function isPalindrome(str) {
+    if (typeof str !== "string") {
+        console.log("Not a valid input");
+        return false;
+    }
+
+    let reversedStr = str.split("").reverse().join("");
+
+    if (str === reversedStr) {
+        console.log("The string is a palindrome");
+        return true;
+    } else {
+        console.log("The string is not a palindrome");
+        return false;
+    }
+}
+
+// isPalindrome("maam");
+// isPalindrome("IO");
+// isPalindrome("1221");
+
 
 //40. Write a JavaScript program to find the most frequent character in a given string.
 
