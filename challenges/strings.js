@@ -339,29 +339,48 @@ function ConvertStringToTitleCase(str){
 //29. Write a JavaScript function to create a zero-filled value with an optional +, - sign.
 //
 //30. Write a JavaScript function to test case-insensitive (except special Unicode characters) string comparison.
-//37
-//31. Write a JavaScript function to create a case-insensitive search.
+function TestCaseInsensitivesStrings(str1,str2){
+   console.log(str1.toLowerCase()===str2.toLowerCase())
+}
+//TestCaseInsensitivesStrings("Hiba","hiba")
+//TestCaseInsensitivesStrings('abcd', 'AbcD')
+//TestCaseInsensitivesStrings('ABCD', 'Abce')
 
+//31. Write a JavaScript function to create a case-insensitive search.
+function SearchCaseInsensitives(str,word){
+console.log(str.toLowerCase().includes(word.toLowerCase()))
+}
+//SearchCaseInsensitives('JavaScript Exercises', 'exercises')
+//SearchCaseInsensitives('JavaScript Exercises', 'Exercises')
+//SearchCaseInsensitives('JavaScript Exercises', 'Exercisess')
 
 //32. Write a JavaScript function to uncapitalize the first character of a string.
-
+function UncapitalizeFirstCaracter(str){
+    console.log(str[0].toLowerCase()+str.slice(1)) 
+}
+//UncapitalizeFirstCaracter('Js String exercises')
 
 //33. Write a JavaScript function to uncapitalize the first letter of each word of a string.
+function UncapitalizeWords(str){
+    var words = str.split(' ');
+    words.forEach((word, index) => {
+        words[index] = word.charAt(0).toLowerCase() + word.slice(1);
+    });
+    console.log(words.join(' '));
+}
+//UncapitalizeWords('Js String Exercises')
 
-//34. Write a JavaScript function to capitalize each word in the string.
-
-//35. Write a JavaScript function to uncapitalize each word in the string.
 
 
-//36. Write a JavaScript function to test whether the character at the index provided is upper case.
+//34. Write a JavaScript function to test whether the character at the index provided is upper case.
 
-//37. Write a JavaScript function to test whether the character at the given (character) index is lower case.
+//35. Write a JavaScript function to test whether the character at the given (character) index is lower case.
 
-//38. Write a JavaScript function to test whether a string starts with a specified string.
+//36. Write a JavaScript function to test whether a string starts with a specified string.
 
-//39. Write a JavaScript function to test whether a string ends with a specified string.
+//37. Write a JavaScript function to test whether a string ends with a specified string.
 
-/*40. Write a JavaScript function to get the successor to a string.
+/*38. Write a JavaScript function to get the successor to a string.
 
 Note: The successor is calculated by incrementing characters starting from the rightmost alphanumeric
  (or the rightmost character if there are no alphanumerics) in the string. 
@@ -372,25 +391,25 @@ Note: The successor is calculated by incrementing characters starting from the r
   adding an additional character if necessary.
  */
 
-  /* 41. Write a JavaScript program to check if a given string contains alphanumeric characters that are palindromes
+/* 39. Write a JavaScript program to check if a given string contains alphanumeric characters that are palindromes
    regardless of special characters and letter case.
 A palindrome is a word, number, phrase, or other sequence of symbols that reads the same backwards as forwards*/
 
-//42. Write a JavaScript program to find the most frequent character in a given string.
+//40. Write a JavaScript program to find the most frequent character in a given string.
 
-//43. Write a JavaScript program to find the most frequent word in a given string.
+//41. Write a JavaScript program to find the most frequent word in a given string.
 
-//44. Write a JavaScript function to reverse words in a given string.
+//42. Write a JavaScript function to reverse words in a given string.
 
-/*45. Write a JavaScript function to find the length of the longest subsequence present between two sequences.
+/*43. Write a JavaScript function to find the length of the longest subsequence present between two sequences.
 It is important to understand that a subsequence is a sequence that appears in a similar relative order, 
 but is not necessarily contiguous. */
 
 
-/*46. Write a JavaScript function to get the length of the longest valid parentheses (well-formed)
+/*44. Write a JavaScript function to get the length of the longest valid parentheses (well-formed)
  from a given string containing just the characters '[' and ']'. */
 
 
- /*47. Write a JavaScript function to find the length of the longest palindromic subsequence in a given string.
+ /*45. Write a JavaScript function to find the length of the longest palindromic subsequence in a given string.
 Subsequences are sequences that can be created by deleting some or all of the elements 
 from another sequence without changing their order. */
