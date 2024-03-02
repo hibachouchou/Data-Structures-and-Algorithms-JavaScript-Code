@@ -441,7 +441,12 @@ function isPalindrome(str) {
 //41. Write a JavaScript program to find the most frequent word in a given string.
 
 //42. Write a JavaScript function to reverse words in a given string.
+function ReverseString(str) {
+console.log(str.split("").reverse().join(""))
+}
+//ReverseString("Hello World!")
 
+   
 /*43. Write a JavaScript function to find the length of the longest subsequence present between two sequences.
 It is important to understand that a subsequence is a sequence that appears in a similar relative order, 
 but is not necessarily contiguous. */
