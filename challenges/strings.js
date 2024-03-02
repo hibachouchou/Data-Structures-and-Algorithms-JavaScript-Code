@@ -292,25 +292,15 @@ function findAWordInString(string,word){
 //26. Write a JavaScript function that checks whether a string ends with a specified suffix.
 //M1
 
-// function checkIfStringEndsWithSuffix(str,suffix){
-//    const lastNCharacters = str.substr((str.length - suffix.length));
-//    if (lastNCharacters === suffix) {
-//       console.log("Yes");
-//    } else {
-//      console.log("No");
-//    }
-// }
-
-//M2
 function checkIfStringEndsWithSuffix(str,suffix){
-    if(str.endsWith(suffix)){
-        console.log("Yes");
-       }
-    else {
-    console.log("No");
-     }
+   const lastNCharacters = str.substr((str.length - suffix.length));
+   if (lastNCharacters === suffix) {
+      console.log("Yes");
+   } else {
+     console.log("No");
+   }
+}
 
-    }
 //checkIfStringEndsWithSuffix("This is a test", "test");
 
 //27. Write a JavaScript function to remove non-word characters.
@@ -370,15 +360,45 @@ function UncapitalizeWords(str){
 }
 //UncapitalizeWords('Js String Exercises')
 
-
-
 //34. Write a JavaScript function to test whether the character at the index provided is upper case.
+function IsUppercaseAtIndex(str,index){
+    console.log(str[index]===str[index].toUpperCase());
+}
+// IsUppercaseAtIndex('Hello World',0)
+// IsUppercaseAtIndex('hiba',2)
 
 //35. Write a JavaScript function to test whether the character at the given (character) index is lower case.
+function IsLowerCaseAtIndex(str,index){
+    console.log(str[index]===str[index].toLowerCase());
+}
+// IsLowerCaseAtIndex('Hello World',0)
+// IsLowerCaseAtIndex('bicha',3)
 
 //36. Write a JavaScript function to test whether a string starts with a specified string.
+function checkIfStringStartssWithString(str,suffix){
+    if(str.startsWith(suffix)){
+        console.log("Yes");
+       }
+    else {
+    console.log("No");
+     }
+
+    }
+//checkIfStringStartssWithString('js string exercises', 'js')
+//checkIfStringStartssWithString("hello","bye")
 
 //37. Write a JavaScript function to test whether a string ends with a specified string.
+function checkIfStringEndsWithString(str,suffix){
+    if(str.endsWith(suffix)){
+        console.log("Yes");
+       }
+    else {
+    console.log("No");
+     }
+
+    }
+    //checkIfStringEndsWithString('js string exercises', 'js')
+   // checkIfStringEndsWithString("hello world","world")
 
 /*38. Write a JavaScript function to get the successor to a string.
 
