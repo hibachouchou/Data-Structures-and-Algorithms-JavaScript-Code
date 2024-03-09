@@ -438,7 +438,64 @@ function isPalindrome(str) {
 
 //40. Write a JavaScript program to find the most frequent character in a given string.
 
+function mostFrequentChar(str) {
+    const charCount = {}; 
+    for (let char of str) {
+        if (charCount[char]) {
+            //console.log(char)
+            //console.log(charCount[char])
+            charCount[char]++;
+        } else {
+           // console.log(char)
+           // console.log(charCount[char])
+            charCount[char] = 1;
+        }
+    }
+    
+    let maxChar = '';
+    let maxCount = 0;
+    
+    for (let char in charCount) {
+        //console.log(charCount)
+       // console.log(maxCount)
+        if (charCount[char] > maxCount) {
+            maxChar = char;
+            maxCount = charCount[char];
+        }
+    }
+    
+    console.log(maxChar) ;
+}
+mostFrequentChar("dooddle")
+
 //41. Write a JavaScript program to find the most frequent word in a given string.
+
+function  mostFrequentWord(str){
+    const wordCount = {}; 
+    const words = str.split(' '); 
+    
+    for (let word of words) {
+        if (wordCount[word]) {
+            wordCount[word]++;
+        } else {
+            wordCount[word] = 1;
+        }
+    }
+    
+    let maxWord = '';
+    let maxCount = 0;
+    
+    for (let word in wordCount) {
+        if (wordCount[word] > maxCount) {
+            maxWord = word;
+            maxCount = wordCount[word];
+        }
+    }
+    
+    console.log(maxWord) ;
+}
+
+//mostFrequentWord("hiba nour nour nour")
 
 //42. Write a JavaScript function to reverse words in a given string.
 function ReverseString(str) {
