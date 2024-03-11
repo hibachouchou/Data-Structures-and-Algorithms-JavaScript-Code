@@ -67,7 +67,7 @@ function FormatPhoneNumber(number) {
 
   console.log(result);
 }
-FormatPhoneNumber("025468"); //0-254-6-8
+//FormatPhoneNumber("025468"); //0-254-6-8
 
 //7. Write a JavaScript program to sort the items of an array.
 function  SortItemsInArray(arr){
@@ -130,18 +130,97 @@ Sample Output :
 " 24"
 "row 1"
 ------ */
+function  printArrayElements(a){
+  let row=0;
+  for(let i=0 ;i <a.length;i++){
+  	console.log(`row ${row}`);
+  	for(let j=0;j<a[i].length;j++)
+  	{
+  		console.log(`  ${a[i][j]}`);
+  	}
+  	row++;
+  	if (i !== a.length-1) {
+  		console.log('------')
+  	}
+  }
+}
+
+//printArrayElements([[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]])
 
 //11. Write a JavaScript program to find the sum of squares of a numerical vector.
+function  sumOfSquares(arr){
+  let sum=0;
+  for(let i=0;i < arr.length;i++){
+    sum += Math.pow(arr[i],2);
+  }
+  return sum;
+}
+//console.log(sumOfSquares([5, -1, 2,  4]));
 
 //12. Write a JavaScript program to compute the sum and product of an array of integers.
+function   sumAndProduct(arr){
+  let sum = 0 ,product = 1;
+  for(let i=0;i  < arr.length;i++){
+    sum+=arr[i];
+    product *= arr[i];
+  }
+  console.log("Sum: ",sum,"Product: ",product) 
+}
+//sumAndProduct([1,2,3,4]);
 
 //14. Write a JavaScript program to remove duplicate items from an array (ignore case sensitivity).
+function removeDuplicates(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    // Convert both current item and items in newArr to lowercase for case insensitivity
+    let lowercaseItem = arr[i].toLowerCase();
+    let lowercaseNewArr = newArr.map(item => item.toLowerCase());
+    
+    if (!lowercaseNewArr.includes(lowercaseItem)) {
+      newArr.push(arr[i]);
+    }
+  }
+  console.log(newArr);
+}
+
+//removeDuplicates(['Abc', 'def', 'abc', 'GHi', 'jkl']);
 
 //16. Write a JavaScript program to find the leap years in a given range of years.
+// A year is a leap year if it is divisible by 4
+// However, if it's divisible by 100 but not by 400, it's not a leap year
+function isLeapYear(year) {
+  return year % 4 == 0 && year % 100 != 0  || year % 400 == 0;
+}
+//
+function findLeapYears(startYear, endYear) {
+  let leapYears = [];
+
+  for (let year = startYear; year <= endYear; year++) {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+      leapYears.push(year);
+    }
+  }
+
+  return leapYears;
+}
+const startYear = 2000;
+const endYear = 2024;
+const leapYearsInRange = findLeapYears(startYear, endYear);
+//console.log("Leap years between", startYear, "and", endYear, ":", leapYearsInRange);
+
 
 //17. Write a JavaScript program to shuffle an array.
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // Generate a random index between 0 and i (inclusive)
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements at indices i and j
+  }
+   console.log(array) ;
+}
+//shuffleArray([1,2,3,4,5,6,7,8,9]);
 
 //18. Write a JavaScript program to perform a binary search.
+
 
 /*19. There are two arrays with individual values. 
 Write a JavaScript program to compute the sum of each individual index value in the given array. */
