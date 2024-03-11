@@ -1,26 +1,123 @@
 // JavaScript Arrays - Exercises
 
 //1. Write a JavaScript function to check whether an `input` is an array or not.
+function is_Array(input) {
+  console.log(Array.isArray(input));
+}
+// is_Array([]); // true
+// is_Array({}); // false
+// is_Array("Hello"); // false
 
 //2. Write a JavaScript function to clone an array.
+function Clone_Array(arr) {
+  console.log([...arr])
+}
+//Clone_Array([1, 2, 3]);
 
 /* 3. Write a JavaScript function to get the first element of an array. 
 Passing the parameter 'n' will return the first 'n' elements of the array.*/
+function GetFirstElements(array, n = null) { 
+  if (n === null){
+    console.log(array[0])
+  } else{
+    console.log(array.slice(0, n).join(' '))
+  }
+  }
+//GetFirstElements([5,6,7,8]) 
+//GetFirstElements([5,6,7,8], 2)
 
 /*4. Write a JavaScript function to get the last element of an array. 
 Passing the parameter 'n' will return the last 'n' elements of the array.*/
+function GetLastElements(array, n = null) { 
+  let last_index = array.length - 1; 
+  if (n === null) {
+    console.log(array[last_index]);
+  } else {
+    console.log(array.slice(-n).join(' '));
+  }
+}
+//GetLastElements([5, 6, 7, 8]);  
+//GetLastElements([5, 6, 7, 8], 2);
 
 //5. Write a simple JavaScript program to join all elements of the following array into a string.
+function  Join_Array(array) {
+  console.log(array.join(' '));
+}
+//Join_Array(['This', 'is', 'a', 'test']);
+//Join_Array([1, 2, 3, 4]);
+
+
 
 /*6. Write a JavaScript program that accepts a number as input and inserts dashes (-) between each even number. 
 For example if you accept 025468 the output should be 0-254-6-8. */
+function FormatPhoneNumber(number) {
+  let numberStr = number.toString();
+  let result = "";
+
+  for (let i = 0; i < numberStr.length; i++) {
+    const currentDigit = parseInt(numberStr[i]);
+    const nextDigit = parseInt(numberStr[i + 1]);
+
+    result += currentDigit;
+
+    if (currentDigit % 2 === 0 && nextDigit % 2 === 0) {
+      result += "-";
+    }
+  }
+
+  console.log(result);
+}
+FormatPhoneNumber("025468"); //0-254-6-8
 
 //7. Write a JavaScript program to sort the items of an array.
+function  SortItemsInArray(arr){
+  arr.sort((a, b) => a - b);
+  console.log(arr)
+}
+//SortItemsInArray([9, 3, 5, 1, 7,  2, 4, 6,  8]);
 
 //8. Write a JavaScript program to find the most frequent item in an array.
+function MostFrequentItem(arr) {
+  // Object to store counts of each item
+  let counts = {};
+  // Variable to store the maximum count encountered so far
+  let maxCount = 0;
+  // Variable to store the most frequent item
+  let mostFrequentItem;
+
+  // Loop through each item in the array
+  for (const item of arr) {
+    // If the item is not yet counted, initialize its count to 0
+    if (!counts[item]) {
+      counts[item] = 0;
+    }
+    // Increment the count for the current item
+    counts[item]++;
+
+    // Check if the count of the current item is greater than the maximum count encountered so far
+    if (counts[item] > maxCount) {
+      // If so, update the maximum count and the most frequent item
+      maxCount = counts[item];
+      mostFrequentItem = item;
+    }
+  }
+
+  // Output the most frequent item
+  console.log(mostFrequentItem);
+}
+//MostFrequentItem([1, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]);
+
+
 
 /*9. Write a JavaScript program that accepts a string as input and swaps the case of each character. 
 For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'. */
+function SwapCase(str){
+  return str.split('').map((char)=>{
+     return char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();
+  }).join('');
+
+}
+//console.log(SwapCase("Hello World"));
 
 /*10. Write a JavaScript program that prints the elements of the following array.
 Note : Use nested for loops.
