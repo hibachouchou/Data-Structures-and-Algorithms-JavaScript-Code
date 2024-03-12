@@ -221,43 +221,273 @@ function shuffleArray(array) {
 
 //18. Write a JavaScript program to perform a binary search.
 
+function binarySearch1(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+
+    // Check if the target is present at mid
+    if (arr[mid] === target) {
+      return mid;
+    }
+
+    // If the target is greater, ignore the left half
+    if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      // If the target is smaller, ignore the right half
+      right = mid - 1;
+    }
+  }
+
+  // If we reach here, then the element was not found
+  return -1;
+}
+
+
+// const array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+// //const target = 10;
+// const target = 13;
+// const index = binarySearch1(array, target);
+
+// if (index !== -1) {
+//   console.log("Target", target, "found at index:", index);
+// } else {
+//   console.log("Target", target, "not found in the array.");
+// }
+
+//Here's the binary search algorithm implemented using recursion
+
+function binarySearch(arr, target, left = 0, right = arr.length - 1) {
+  if (left > right) {
+    return -1; // Base case: target not found
+  }
+
+  const mid = Math.floor((left + right) / 2);
+
+  if (arr[mid] === target) {
+    return mid; // Base case: target found at mid index
+  } else if (arr[mid] < target) {
+    // Recur on the right half of the array
+    return binarySearch(arr, target, mid + 1, right);
+  } else {
+    // Recur on the left half of the array
+    return binarySearch(arr, target, left, mid - 1);
+  }
+}
+
+// const array1 = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+// const target1 = 13;
+// const index1 = binarySearch(array1, target1);
+
+// if (index1 !== -1) {
+//   console.log("Target", target1, "found at index:", index1);
+// } else {
+//   console.log("Target", target1, "not found in the array.");
+// }
+
 
 /*19. There are two arrays with individual values. 
 Write a JavaScript program to compute the sum of each individual index value in the given array. */
+function computeSumAtIndex(arr1, arr2) {
+  const result = [];
+  
+  // Check if both arrays have the same length
+  if (arr1.length !== arr2.length) {
+    console.log("Arrays must have the same length.");
+    return result;
+  }
+  
+  // Iterate over the arrays and compute the sum at each index
+  for (let i = 0; i < arr1.length; i++) {
+    result.push(arr1[i] + arr2[i]);
+  }
+  
+  return result;
+}
+
+//console.log("Sum of each individual index value:", computeSumAtIndex([1, 2, 3, 4], [5, 6, 7, 8]));
+
 
 /*20. Write a JavaScript program to find duplicate values in a JavaScript array. */
+function findDuplicates(arr) {
+  const duplicates = [];
+  const uniqueValues = {};
+  // Iterate over the array
+  for (const val of arr) {
+    // If the value is already in uniqueValues, add it to duplicates
+     if (uniqueValues[val]) {
+       duplicates.push(val);
+     } else {
+       uniqueValues[val] = true;
+     }
+     }
+     
+     console.log(duplicates)
+}
+//findDuplicates([1, 2, 3, 4, 1, 5, 6, 7,  8, "a", "b", "c","d" ,'e','f'])
 
 /*22. Write a JavaScript program to compute the union of two arrays. */
+function computeUnion(arr1, arr2){
+  let unionSet= new Set();
+  for(let item of arr1) {unionSet.add(item)}
+  for(let item of arr2) {unionSet.add(item)}
+  console.log(Array.from(unionSet))
+}
+//computeUnion([1,2,3,4], [3,4,5,6])
 
 /*23. Write a JavaScript function to find the difference between two arrays. */
+function computeDiff(arr1, arr2){
+  let diffArr=[];
+  for(let i=0;i<arr1.length;i++){
+    if(!arr2.includes(arr1[i])){
+      diffArr.push(arr1[i]);
+    }
+  }
+  for(let i=0;i<arr2.length;i++){
+    if(!arr1.includes(arr2[i])){
+      diffArr.push(arr2[i]);
+    }
+  }
+  console.log(diffArr)
+}
+//computeDiff([1,2,3,4,5],[3,4,5,6])
 
 /*24. Write a JavaScript function to remove. 'null', '0', '""', 'false', 'undefined' and 'NaN' values from an array. */
+function removeFalsyValues(arr) {
+  return arr.filter(value => {
+    return value !== null &&
+           value !== 0 &&
+           value !== "" &&
+           value !== false &&
+           !Number.isNaN(value) &&
+           typeof value !== 'undefined';
+  });
+}
+
+//console.log(removeFalsyValues([1, null, undefined, 2, '', false, NaN]));
+
 
 /* 25. Write a JavaScript function to sort the following array of objects by title value. */
+function sortByTitle(arrayOfObjects) {
+  // Sorting the array of objects by the 'title' value
+  arrayOfObjects.sort((a, b) => {
+    // Convert both titles to lowercase for case-insensitive sorting
+    const titleA = a.title.toLowerCase();
+    const titleB = b.title.toLowerCase();
+
+    // Compare the titles
+    if (titleA < titleB) {
+      return -1;
+    } else if (titleA > titleB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  console.log(arrayOfObjects)
+}
+
+// sortByTitle([
+//   { title: "Zebra" },
+//   { title: "Apple" },
+//   { title: "Banana" },
+//   { title: "carrot" }
+// ]);
+
 
 /*26. Write a JavaScript program to find a pair of elements 
 (indices of the two numbers) in a given array whose sum equals a specific target number. */
+function  findPairWithSum(arr, targetNum){
+ 
+}
 
 /*27. Write a JavaScript function to retrieve the value of a given property from all elements in an array. */
+function  getPropertyValueFromArrayElements(arr, propName){
+}
 
 /*28. Write a JavaScript function to find the longest common starting substring in a set of strings. */
+function  longestCommonStartingSubstring(stringsArray) {
+
+}
 
 
 /*29. Write a JavaScript function to fill an array with values (numeric, string with one character) within supplied bounds. */
+function FillArrayWithDifferentValues(){
+  
+}
 
 /*30. Write a JavaScript function that merges two arrays and removes all duplicate elements. */
+function mergeAndRemoveDuplicates(a, b) {
+  let mergedArr = [...new Set([...a, ...b])];
+  console.log(mergedArr) ;
+}
+//mergeAndRemoveDuplicates([1,2,3,4], [3,4,5,6]);
 
 /*31. Write a JavaScript function to remove a specific element from an array. */
+function removeElementFromArray(arr, elem) {
+console.log(arr.filter(item => item !== elem))
+}
+//removeElementFromArray([1,2,3,4,5,6,7], 3)
 
 /*32. Write a JavaScript function to find an array containing a specific element. */
 
+function findElementInArray(arr, searchElem) {
+  return arr.includes(searchElem);
+}
+
+// const array = [1, 2, 3, 4, 5];
+// const searchElement = 3;
+// const found = findElementInArray(array, searchElement);
+
+// if (found) {
+//   console.log("The element", searchElement, "is found in the array:", array);
+// } else {
+//   console.log("The element", searchElement, "is not found in the array:", array);
+// }
+
+
 /*33. Write a JavaScript script to empty an array while keeping the original. */
+function emptyArrayKeepOriginal(arr) {
+  arr.length = 0;
+}
+// const originalArray = [1, 2, 3, 4, 5];
+// console.log("Original array:", originalArray);
+
+// emptyArrayKeepOriginal(originalArray);
+// console.log("Array after emptying while keeping the original:", originalArray);
+
 
 /*34. Write a JavaScript function to get the nth largest element from an unsorted array. */
+function nthLargest(arr, n) {
+  // Sort the array in descending order
+  arr.sort(function(a, b) {
+      return b - a;
+  });
+  console.log('Sorted Array', arr);
+  // Return the nth largest element
+  return arr[n - 1];
+}
+//console.log("The", 3 + "th largest element is:", nthLargest([1, 5, 2, 7, 3, 9], 3)); // Output: 5
 
 /*35. Write a JavaScript function to get random items from an array. */
+function  getRandomItemsFromAnArray(arr, count){
+  var result = [];
+  var tempArr = arr.slice();
+  for(var i=0;i<count;i++){
+    var index = Math.floor(Math.random() * tempArr.length / count);
+    result.push(tempArr[index]);
+    tempArr.splice(index, 1);
+    }
+  console.log(result) ;
+}
+//getRandomItemsFromAnArray([1,2,3,4,5,6,7,8,9], 3);
 
 /*36. Write a JavaScript function to create a specified number of elements with a pre-filled numeric value array. */
+
 
 /*37. Write a JavaScript function to create a specified number of elements with a pre-filled string value array. */
 
