@@ -488,19 +488,75 @@ function  getRandomItemsFromAnArray(arr, count){
 
 /*36. Write a JavaScript function to create a specified number of elements with a pre-filled numeric value array. */
 
-
-/*37. Write a JavaScript function to create a specified number of elements with a pre-filled string value array. */
-
 /*38. Write a JavaScript function to move an array element from one position to another. */
+function moveArrayElement(arr, fromIndex, toIndex) {
+  // Remove the element from the 'fromIndex' position
+  var element = arr.splice(fromIndex, 1)[0];
+  
+  // Insert the element at the 'toIndex' position
+  arr.splice(toIndex, 0, element);
+  
+  // Return the modified array
+  return arr;
+}
 
-/*39. Write a JavaScript function to filter false, null, 0 and blank values from an array. */
+// var array = [1, 2, 3, 4, 5];
+// var fromIndex = 2;
+// var toIndex = 4;
+// console.log("Original array:", array);
+// moveArrayElement(array, fromIndex, toIndex);
+// console.log("Array after moving element:", array);
+
 
 /*40. Write a JavaScript function to generate an array of integer numbers,
  increasing one from the starting position, of a specified length. */
+ function generateIncreasingArray(start, length) {
+  var result = [];
+  for (var i = 0; i < length; i++) {
+      result.push(start + i);
+  }
+  return result;
+}
+
+// var startingPosition = 5;
+// var arrayLength = 7;
+// var generatedArray = generateIncreasingArray(startingPosition, arrayLength);
+// console.log("Generated array:", generatedArray);
 
  /*41. Write a JavaScript function to generate an array between two integers of 1 step length. */
+ function generateSteppingArray(start, end) {
+  if (end <= start) {
+    throw new Error('The "end" parameter must be greater than the "start" parameter');
+  }
+  var result = [];
+  for (var i = start; i <= end; i++) {
+    result.push(i);
+  }
+  console.log(result) ;
+ }
+// generateSteppingArray(1, 10);
 
  /*42. Write a JavaScript function to find unique elements in two arrays. */
+ function findUniqueElements(array1, array2) {
+  var unionSet = new Set();
+  // Add all elements from first array to  set
+  for (var i = 0; i < array1.length; i++) {
+    unionSet.add(array1[i]);
+  }
+  //same for arr2
+  // Remove common elements from set
+  for (var j = 0; j < array2.length; j++) {
+    unionSet.delete(array2[j]);
+  }
+  //same for arr1
+  // Create an array from the remaining set members
+  var unionArray = Array.from(unionSet);
+  return unionArray;
+  
+}
+//45. Write a JavaScript program to find all the unique values in a set of numbers.
+//console.log("Unique elements:", findUniqueElements([1, 2, 3, 4, 5], [3, 4, 5, 6, 7])); 
+
 
  /*43. Write a JavaScript function to create an array of arrays, 
  ungrouping the elements in an array produced by zip. */
@@ -508,7 +564,7 @@ function  getRandomItemsFromAnArray(arr, count){
  /*44. Write a JavaScript function to create an object from an array, 
  using the specified key and excluding it from each value. */
 
- //45. Write a JavaScript program to find all the unique values in a set of numbers.
+ 
 
  //46. Write a JavaScript program to generate all permutations of an array's elements (including duplicates).
 
