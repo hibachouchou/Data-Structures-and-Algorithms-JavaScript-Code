@@ -563,6 +563,25 @@ function moveArrayElement(arr, fromIndex, toIndex) {
 
  /*44. Write a JavaScript function to create an object from an array, 
  using the specified key and excluding it from each value. */
+ function createObjectFromArray(arr, key) {
+  var obj = {};
+  arr.forEach(function(item) {
+      // Exclude the specified key from the item
+      var value = Object.assign({}, item); // Create a shallow copy of the item
+      delete value[key]; // Exclude the specified key
+      obj[item[key]] = value;
+  });
+  return obj;
+}
+
+// var array = [
+//   { id: 1, name: 'John', age: 30 },
+//   { id: 2, name: 'Jane', age: 25 },
+//   { id: 3, name: 'Doe', age: 40 }
+// ];
+// var key = 'id';
+// var result = createObjectFromArray(array, key);
+// console.log("Object created from array:", result);
 
  
 
@@ -570,19 +589,158 @@ function moveArrayElement(arr, fromIndex, toIndex) {
 
 
  //47. Write a JavaScript program to remove all false values from an object or array.
+ function removeFalse(input) {
+  if (Array.isArray(input)) {
+      // For arrays
+      return input.filter(Boolean);
+  } else if (typeof input === 'object' && input !== null) {
+      // For objects
+      var newObj = {};
+      for (var key in input) {
+          if (input[key]) {
+              newObj[key] = input[key];
+          }
+      }
+      return newObj;
+  } else {
+      // Return input as it is for other types
+      return input;
+  }
+}
+
+// Example usage with array:
+// var array = [0, 1, false, true, '', 'hello', null, undefined];
+// var filteredArray = removeFalse(array);
+// console.log("Filtered array:", filteredArray);
+
+// // Example usage with object:
+// var object = {
+//   name: 'John',
+//   age: 0,
+//   active: true,
+//   job: '',
+//   hobbies: ['reading', null, undefined]
+// };
+// var filteredObject = removeFalse(object);
+// console.log("Filtered object:", filteredObject);
+
+
 
  /*48. Write a JavaScript program that takes an array of integers
   and returns false if every number is not prime. Otherwise, return true. */
+  function areAllPrimes(arr) {
+    // Function to check if a number is prime
+    function isPrime(n) {
+        if (n <= 1) return false; // 1 and numbers less than 1 are not prime
+        
+        // Check for factors from 2 to the square root of n
+        for (var i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) {
+                return false; // Found a factor, so it's not prime
+            }
+        }
+        
+        return true; // If no factors found, it's prime
+    }
+    
+    // Check if every number in the array is prime
+    for (var i = 0; i < arr.length; i++) {
+        if (!isPrime(arr[i])) {
+            return false; // Found a non-prime number
+        }
+    }
+    return true; // All numbers are prime
+}
+
+
+//console.log("Array 1:", areAllPrimes([2, 3, 5, 7, 11])); // Output: true (all numbers are prime)
+//console.log("Array 2:", areAllPrimes([4, 6, 8, 9, 10])); // Output: false (some numbers are not prime)
+
 
   //49. Write a JavaScript program that takes an array of numbers and returns the third smallest number.
+  function thirdSmallestNumber(arr) {
+    // Sort the array in ascending order
+    arr.sort(function(a, b) {
+        return a - b;
+    });
+    
+    // Return the third element in the sorted array
+    return arr[2];
+}
+//console.log("Third smallest number:", thirdSmallestNumber([5, 2, 9, 1, 7, 3])); // Output: 3
+
 
   //50. Write a JavaScript program that takes an array with mixed data type and calculates the sum of all numbers.
+  function sumOfNumbers(arr) {
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === 'number') {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
+//console.log("Sum of numbers:", sumOfNumbers([1, 'hello', 3, 'world', 5.5, true])); // Output: 9.5 (1 + 3 + 5.5)
 
   //51. Write a JavaScript program to check if an array is a factor chain or not.
+/*A factor chain is a sequence of numbers where each number is a factor of the next number in the sequence. In other words, if you have a sequence of numbers [a, b, c, ...], then for each consecutive pair of numbers (a, b), (b, c), etc., b is a multiple of a, c is a multiple of b, and so on.
+
+For example, consider the sequence [1, 2, 4, 8, 16]:
+
+2 is a factor of 1
+4 is a factor of 2
+8 is a factor of 4
+16 is a factor of 8 */
+
+function isFactorChain(arr) {
+  // Check if the array has at least two elements
+  if (arr.length < 2) {
+      return false;
+  }
+
+  // Iterate through the array starting from the second element
+  for (var i = 1; i < arr.length; i++) {
+      // Check if the current number is a factor of the previous number
+      if (arr[i] % arr[i - 1] !== 0) {
+          return false; // If not, it's not a factor chain
+      }
+  }
+
+  // If all pairs satisfy the condition, it's a factor chain
+  return true;
+}
+
+//console.log("Is array 1 a factor chain?", isFactorChain([1, 2, 4, 8, 16])); // Output: true
+//console.log("Is array 2 a factor chain?", isFactorChain([2, 4, 6, 7, 12])); // Output: false
 
   //52. Write a JavaScript program to get all the indexes where NaN is found in a given array of numbers and NaN.
+  function getNaNIndexes(arr) {
+    var indexes = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (isNaN(arr[i])) {
+            indexes.push(i);
+        }
+    }
+    return indexes;
+}
+
+//var nanIndexes = getNaNIndexes([0, NaN, 2, NaN, 4, NaN]);
+//console.log("Indexes where NaN is found:", nanIndexes); // Output: [1, 3, 5]
 
 //53. Write a JavaScript program to count the number of arrays inside a given array.
+function countArrays(arr) {
+  var count = 0;
+  for (var i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+          count++;
+      }
+  }
+  return count;
+}
+
+//var numberOfArrays = countArrays([1, [2, 3], "hello", [4, 5, 6], {a: 1}, [7, 8, 9]]);
+//console.log("Number of arrays:", numberOfArrays); // Output: 3
 
 //
 
