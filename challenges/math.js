@@ -3,25 +3,110 @@
 /*
 1. Write a JavaScript function to convert a number from one base to another.
 Note : Both bases must be between 2 and 36.
+*/
+
+function convertBase(number, fromBase, toBase) {
+    if (fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36) {
+        return "Both bases must be between 2 and 36";
+    }
+
+    // Convert the number to base 10 first
+    var decimalValue = parseInt(number, fromBase);
+
+    // Convert the decimal value to the desired base
+    var result = decimalValue.toString(toBase);
+
+    return result;
+}
+//console.log(convertBase("1010", 2, 10));  // Output: 10
+//console.log(convertBase("A1", 16, 2));    // Output: 10100001
+
+/*
 
 
 2. Write a JavaScript function to convert a binary number to a decimal number.
+*/
+function binaryToDecimal(binary) {
+    return parseInt(binary, 2);
+}
+//console.log(binaryToDecimal("1010"));  // Output: 10
+//console.log(binaryToDecimal("1101"));  // Output: 13
 
-
+/*
 3. Write a JavaScript function to convert a decimal number to a binary, hexadecimal or octal number.
+*/
+function decimalToBase(decimal, base) {
+    if (base === 2) {
+        return decimal.toString(2); // Binary
+    } else if (base === 16) {
+        return decimal.toString(16); // Hexadecimal
+    } else if (base === 8) {
+        return decimal.toString(8); // Octal
+    } else {
+        return "Base must be 2, 8, or 16";
+    }
+}
 
+//console.log(decimalToBase(10, 2));    // Output: "1010" (binary)
+//console.log(decimalToBase(13, 16));   // Output: "D" (hexadecimal)
+//console.log(decimalToBase(15, 8));    // Output: "17" (octal)
 
+/*
 4. Write a JavaScript function to generate a random integer.
+*/
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+// Example usage: generating a random integer between 1 and 100
+//var randomNum = getRandomInt(1, 100);
+//console.log(randomNum);
 
+/*
 
 5. Write a JavaScript function to format a number up to specified decimal places.
 
 
 6. Write a JavaScript function to find the highest value in an array.
+*/
+function findHighestValue(arr) {
+    if (arr.length === 0) {
+        return "Array is empty";
+    }
 
+    let highest = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > highest) {
+            highest = arr[i];
+        }
+    }
+    return highest;
+}
+//console.log(findHighestValue([5, 9, 2, 11, 3]));  // Output: 11
+//console.log(findHighestValue([]));               // Output: "Array is empty"
+
+/*
 
 7. Write a JavaScript function to find the lowest value in an array.
+*/
+function findLowestValue(arr) {
+    if (arr.length === 0) {
+        return "Array is empty";
+    }
 
+    let lowest = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < lowest) {
+            lowest = arr[i];
+        }
+    }
+    return lowest;
+}
+// console.log(findLowestValue([5, 9, 2, 11, 3]));  // Output: 2
+// console.log(findLowestValue([]));               // Output: "Array is empty"
+
+/*
 
 8. Write a JavaScript function to get the greatest common divisor (GCD) of two integers.
 Note :
@@ -59,10 +144,36 @@ Note : Integer - A number which is not a fraction; a whole number.
 
 
 17. Write a JavaScript function to calculate the sum of values in an array.
+*/
+function calculateSum(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+//console.log(calculateSum([1, 2, 3, 4, 5]));  // Output: 15
+//console.log(calculateSum([]));               // Output: 0
 
+/*
 
 18. Write a JavaScript function to calculate the product of values in an array.
+*/
+function calculateProduct(arr) {
+    if (arr.length === 0) {
+        return 0; // Product of an empty array is 0
+    }
 
+    let product = 1;
+    for (let i = 0; i < arr.length; i++) {
+        product *= arr[i];
+    }
+    return product;
+}
+// console.log(calculateProduct([1, 2, 3, 4, 5]));  // Output: 120
+// console.log(calculateProduct([]));               // Output: 0
+
+/*
 
 19. Create a Pythagorean function in JavaScript.
 Note : The Pythagorean Theorem tells us that the relationship in every right triangle is : c2 = a2 + b2, where c is the hypotenuse and a, b are two legs of the triangle.
